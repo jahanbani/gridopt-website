@@ -45,14 +45,20 @@ export function ContactContent() {
     const form = e.currentTarget
     const formData = new FormData(form)
     
+    // Add Web3Forms access key and settings
+    formData.append('access_key', 'YOUR_ACCESS_KEY_HERE') // Replace with your key from web3forms.com
+    formData.append('subject', 'New Contact from GridOPT Website')
+    formData.append('from_name', 'GridOPT Contact Form')
+    
     try {
-      const response = await fetch('/', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+        body: formData,
       })
       
-      if (response.ok) {
+      const result = await response.json()
+      
+      if (result.success) {
         setFormState('success')
         form.reset()
       } else {
@@ -157,18 +163,9 @@ export function ContactContent() {
               <form 
                 onSubmit={handleSubmit} 
                 className="bg-slate-50 rounded-2xl p-8"
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
               >
-                {/* Hidden fields for Netlify Forms */}
-                <input type="hidden" name="form-name" value="contact" />
-                <p className="hidden">
-                  <label>
-                    Don&apos;t fill this out: <input name="bot-field" />
-                  </label>
-                </p>
+                {/* Honeypot for spam protection */}
+                <input type="checkbox" name="botcheck" className="hidden" />
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">

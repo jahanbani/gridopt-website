@@ -4,8 +4,14 @@ import { ServicesContent } from './ServicesContent'
 import { CTA } from '@/components/CTA'
 
 export const metadata: Metadata = {
-  title: 'Services',
-  description: 'Comprehensive power systems consulting services including interconnection studies, EMT/PSCAD analysis, HVDC/FACTS, NERC compliance, and AI automation.',
+  title: 'Power Systems Consulting Services',
+  description: 'Expert interconnection studies, EMT/PSCAD modeling, HVDC/FACTS analysis, NERC compliance support, and AI-driven grid automation. Serving utilities, ISOs, and renewable developers.',
+  keywords: ['interconnection studies', 'EMT analysis', 'PSCAD modeling', 'HVDC studies', 'FACTS devices', 'NERC compliance', 'power systems consulting', 'grid integration'],
+  openGraph: {
+    title: 'Power Systems Consulting Services | GridOPT',
+    description: 'Expert interconnection studies, EMT/PSCAD modeling, and AI-driven grid solutions.',
+    images: ['/images/wind-offshore.jpg'],
+  },
 }
 
 export default function ServicesPage() {
