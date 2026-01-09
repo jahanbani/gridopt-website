@@ -4,8 +4,14 @@ import { InsightsContent } from './InsightsContent'
 import { CTA } from '@/components/CTA'
 
 export const metadata: Metadata = {
-  title: 'Insights & Publications',
-  description: 'Research publications, industry insights, and technical articles from GridOPT\'s power systems experts.',
+  title: 'Insights & Research Publications',
+  description: 'Technical publications on IBR integration, grid stability, HVDC systems, and power systems optimization. Peer-reviewed research from our engineering team.',
+  keywords: ['power systems research', 'grid stability publications', 'IBR integration', 'HVDC research', 'renewable energy studies', 'technical papers'],
+  openGraph: {
+    title: 'Insights & Publications | GridOPT',
+    description: 'Research publications and industry insights from our power systems experts.',
+    images: ['/images/analytics-dashboard.jpg'],
+  },
 }
 
 export default function InsightsPage() {

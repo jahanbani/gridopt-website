@@ -4,8 +4,14 @@ import { AboutContent } from './AboutContent'
 import { CTA } from '@/components/CTA'
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'Learn about GridOPT - expert power systems consulting with PhD-level expertise and AI-driven solutions.',
+  title: 'About Us - Power Systems Experts',
+  description: 'GridOPT brings PhD-level power systems expertise with 40+ combined years in grid modeling, PSSE/PSCAD analysis, and renewable integration. Trusted by ISOs and utilities nationwide.',
+  keywords: ['power systems experts', 'grid consulting team', 'PhD engineers', 'PSSE expertise', 'utility consulting', 'ISO consulting'],
+  openGraph: {
+    title: 'About GridOPT - Power Systems Experts',
+    description: 'PhD-level expertise combined with cutting-edge AI for modern grid challenges.',
+    images: ['/images/substation.jpg'],
+  },
 }
 
 export default function AboutPage() {

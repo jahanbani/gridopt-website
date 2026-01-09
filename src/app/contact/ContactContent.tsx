@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
 const contactInfo = [
   {
@@ -36,15 +36,37 @@ const services = [
 ]
 
 export function ContactContent() {
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle')
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormState('submitting')
     
-    // Simulate form submission - replace with actual form handler
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setFormState('success')
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    
+    // Add Web3Forms access key and settings
+    formData.append('access_key', 'YOUR_ACCESS_KEY_HERE') // Replace with your key from web3forms.com
+    formData.append('subject', 'New Contact from GridOPT Website')
+    formData.append('from_name', 'GridOPT Contact Form')
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      
+      const result = await response.json()
+      
+      if (result.success) {
+        setFormState('success')
+        form.reset()
+      } else {
+        setFormState('error')
+      }
+    } catch {
+      setFormState('error')
+    }
   }
 
   return (
@@ -119,8 +141,31 @@ export function ContactContent() {
                   Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                 </p>
               </div>
+            ) : formState === 'error' ? (
+              <div className="bg-red-50 rounded-2xl p-12 text-center">
+                <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <AlertCircle className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-heading text-2xl font-bold text-slate-900 mb-4">
+                  Oops! Something went wrong
+                </h3>
+                <p className="text-slate-600 mb-4">
+                  Please try again or email us directly at info@gridopt.io
+                </p>
+                <button
+                  onClick={() => setFormState('idle')}
+                  className="text-accent-teal font-semibold hover:underline"
+                >
+                  Try Again
+                </button>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-slate-50 rounded-2xl p-8">
+              <form 
+                onSubmit={handleSubmit} 
+                className="bg-slate-50 rounded-2xl p-8"
+              >
+                {/* Honeypot for spam protection */}
+                <input type="checkbox" name="botcheck" className="hidden" />
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
