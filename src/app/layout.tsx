@@ -51,6 +51,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${outfit.variable}`}>
       <body className="font-sans antialiased bg-slate-50 text-slate-900">
+        {/* Hidden form for Netlify Forms detection - must be in static HTML */}
+        <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="text" name="company" />
+          <select name="service"><option value="">Select</option></select>
+          <textarea name="message"></textarea>
+        </form>
+        
         <Navbar />
         <main>{children}</main>
         <Footer />
