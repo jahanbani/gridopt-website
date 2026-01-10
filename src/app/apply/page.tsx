@@ -12,7 +12,7 @@ export default function ApplyPage() {
     <>
       <PageHeader
         title="Submit Your Application"
-        description="Join our team of expert power systems engineers"
+        subtitle="Join our team of expert power systems engineers"
       />
       <ApplyContent />
     </>

@@ -12,7 +12,7 @@ export default function CareersPage() {
     <>
       <PageHeader
         title="Join Our Team"
-        description="Help us build the future of power systems engineering"
+        subtitle="Help us build the future of power systems engineering"
       />
       <CareersContent />
     </>
