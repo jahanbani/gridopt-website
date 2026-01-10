@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 import { PageHeader } from '@/components'
 import { ApplyContent } from './ApplyContent'
 
@@ -14,7 +15,9 @@ export default function ApplyPage() {
         title="Submit Your Application"
         subtitle="Join our team of expert power systems engineers"
       />
-      <ApplyContent />
+      <Suspense fallback={<div className="container mx-auto px-6 py-20 text-center">Loading...</div>}>
+        <ApplyContent />
+      </Suspense>
     </>
   )
 }
