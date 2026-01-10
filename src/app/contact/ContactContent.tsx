@@ -46,7 +46,7 @@ export function ContactContent() {
     const formData = new FormData(form)
     
     // Add Web3Forms access key and settings
-    formData.append('access_key', 'YOUR_ACCESS_KEY_HERE') // Replace with your key from web3forms.com
+    formData.append('access_key', 'f35947e7-1475-41b0-be89-d833a37fc53c')
     formData.append('subject', 'New Contact from GridOPT Website')
     formData.append('from_name', 'GridOPT Contact Form')
     
