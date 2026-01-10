@@ -113,7 +113,7 @@ export function ApplyContent() {
               Join Our Team
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-10">
-              We're excited that you're interested in joining our team! Please complete the application form and attach your resume. We review all applications carefully and will reach out to qualified candidates within one week.
+              We&apos;re excited that you&apos;re interested in joining our team! Please complete the application form and attach your resume. We review all applications carefully and will reach out to qualified candidates within one week.
             </p>
 
             {/* Contact Cards */}
